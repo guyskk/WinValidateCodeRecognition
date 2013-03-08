@@ -162,6 +162,7 @@
             this.picBoxTemplate.Location = new System.Drawing.Point(276, 275);
             this.picBoxTemplate.Name = "picBoxTemplate";
             this.picBoxTemplate.Size = new System.Drawing.Size(50, 50);
+            this.picBoxTemplate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picBoxTemplate.TabIndex = 14;
             this.picBoxTemplate.TabStop = false;
             // 
@@ -171,7 +172,7 @@
             this.txtRedress.Name = "txtRedress";
             this.txtRedress.Size = new System.Drawing.Size(46, 21);
             this.txtRedress.TabIndex = 15;
-            this.txtRedress.Text = "0";
+            this.txtRedress.Text = "10";
             this.txtRedress.TextChanged += new System.EventHandler(this.txtRedress_TextChanged);
             // 
             // MainForm
