@@ -210,7 +210,7 @@ namespace WinValidateCodeRecognition
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Image myImage = new Bitmap(60, 20);//你图片大小,我这个是某网页游戏的
+            Image myImage = new Bitmap(60, 20);
             HtmlDocument doc = webBrowser1.Document;
             #region 获取验证码图片
             IHTMLControlElement img = (IHTMLControlElement)doc.Images["img_rrand_code"].DomElement;
@@ -219,7 +219,7 @@ namespace WinValidateCodeRecognition
             IHTMLControlRange rang = (IHTMLControlRange)body.createControlRange();
             rang.add(img);
             rang.execCommand("Copy", false, null);
-            myImage = Clipboard.GetImage();//之后就不用说了吧
+            myImage = Clipboard.GetImage();
             pictureBox1.Image = myImage;
             #endregion
             doc.InvokeScript("cccxsubmit",new object[]{"stationDIV","stationDIV2"});
@@ -237,7 +237,7 @@ namespace WinValidateCodeRecognition
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Image myImage = new Bitmap(60, 20);//你图片大小,我这个是某网页游戏的
+            Image myImage = new Bitmap(60, 20);
             HtmlDocument doc = webBrowser1.Document;
             #region 获取验证码图片
             IHTMLControlElement img = (IHTMLControlElement)doc.Images["img_rrand_code"].DomElement;
@@ -247,7 +247,7 @@ namespace WinValidateCodeRecognition
             rang.add(img);
             rang.execCommand("Copy", false, null);
             pictureBox1.Image = null;
-            myImage = Clipboard.GetImage();//之后就不用说了吧
+            myImage = Clipboard.GetImage();
             pictureBox1.Image = myImage;
             #endregion
             
