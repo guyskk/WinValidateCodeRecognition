@@ -79,6 +79,48 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="TemplatePic\0\0.jpg" />
+    <Content Include="TemplatePic\0\1.jpg" />
+    <Content Include="TemplatePic\10\0.jpg" />
+    <Content Include="TemplatePic\11\0.jpg" />
+    <Content Include="TemplatePic\12\0.jpg" />
+    <Content Include="TemplatePic\14\0.jpg" />
+    <Content Include="TemplatePic\15\0.jpg" />
+    <Content Include="TemplatePic\16\16.jpg" />
+    <Content Include="TemplatePic\1\0.jpg" />
+    <Content Include="TemplatePic\1\1.jpg" />
+    <Content Include="TemplatePic\1\2.jpg" />
+    <Content Include="TemplatePic\2\0.jpg" />
+    <Content Include="TemplatePic\2\1.jpg" />
+    <Content Include="TemplatePic\2\2.jpg" />
+    <Content Include="TemplatePic\3\0.jpg" />
+    <Content Include="TemplatePic\3\1.jpg" />
+    <Content Include="TemplatePic\3\2.jpg" />
+    <Content Include="TemplatePic\4\0.jpg" />
+    <Content Include="TemplatePic\4\1.jpg" />
+    <Content Include="TemplatePic\4\2.jpg" />
+    <Content Include="TemplatePic\5\0.jpg" />
+    <Content Include="TemplatePic\5\1.jpg" />
+    <Content Include="TemplatePic\5\2.jpg" />
+    <Content Include="TemplatePic\6\0.jpg" />
+    <Content Include="TemplatePic\6\1.jpg" />
+    <Content Include="TemplatePic\6\2.jpg" />
+    <Content Include="TemplatePic\7\0.jpg" />
+    <Content Include="TemplatePic\7\1.jpg" />
+    <Content Include="TemplatePic\7\2.jpg" />
+    <Content Include="TemplatePic\7\3.jpg" />
+    <Content Include="TemplatePic\8\0.jpg" />
+    <Content Include="TemplatePic\8\1.jpg" />
+    <Content Include="TemplatePic\8\2.jpg" />
+    <Content Include="TemplatePic\9\0.jpg" />
+    <Content Include="TemplatePic\9\1.jpg" />
+    <Content Include="TemplatePic\9\2.jpg" />
+    <Content Include="TemplatePic\=.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TemplatePic\13\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
