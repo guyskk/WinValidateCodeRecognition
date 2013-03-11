@@ -200,7 +200,7 @@ namespace WinValidateCodeRecognition
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
 
-            
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -210,8 +210,13 @@ namespace WinValidateCodeRecognition
 
         private void button3_Click(object sender, EventArgs e)
         {
+
             Image myImage = new Bitmap(60, 20);
             HtmlDocument doc = webBrowser1.Document;
+
+            doc.GetElementById("startStation_ticketPrice1").Children[1].Children[0].SetAttribute("value", "上海");
+            doc.GetElementById("arriveStation_ticketPrice1").Children[1].Children[0].SetAttribute("value", "北京");
+
             #region 获取验证码图片
             IHTMLControlElement img = (IHTMLControlElement)doc.Images["img_rrand_code"].DomElement;
             IHTMLDocument2 tmpDoc = webBrowser1.Document.DomDocument as IHTMLDocument2;
@@ -222,8 +227,8 @@ namespace WinValidateCodeRecognition
             myImage = Clipboard.GetImage();
             pictureBox1.Image = myImage;
             #endregion
-            doc.InvokeScript("cccxsubmit",new object[]{"stationDIV","stationDIV2"});
-            StreamWriter sw=new StreamWriter(@"F:\1.txt");
+            doc.InvokeScript("cccxsubmit", new object[] { "stationDIV", "stationDIV2" });
+            StreamWriter sw = new StreamWriter(@"F:\1.txt");
             sw.Write(doc.GetElementById("gridbox").InnerHtml);
             sw.Dispose();
         }
@@ -250,7 +255,7 @@ namespace WinValidateCodeRecognition
             myImage = Clipboard.GetImage();
             pictureBox1.Image = myImage;
             #endregion
-            
+
         }
 
     }
