@@ -135,7 +135,7 @@ namespace WinValidateCodeRecognition
                 DirectoryInfo dir = new DirectoryInfo(path + i);
                 for (int n = 0; n < dir.GetFiles().Count(); n++)
                 {
-                    Image imgTg = Image.FromFile(path + i + n + ".jpg");
+                    Image imgTg = Image.FromFile(path + i + @"\" + n + ".jpg");
                     Bitmap bmpMT = new Bitmap(imgTg);
                 }
             }
