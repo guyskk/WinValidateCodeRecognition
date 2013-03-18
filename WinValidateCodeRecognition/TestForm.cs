@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace WinValidateCodeRecognition
@@ -33,6 +28,21 @@ namespace WinValidateCodeRecognition
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             textBox1.Text = trackBar1.Value.ToString();
             pictureBox1.Image = ValidateCodeHelper.ToBinaryzation(bmpT, trackBar1.Value);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string path = @"F:\1.jpg";
+            Bitmap bmp = new Bitmap(path);
+            pictureBox2.Image = bmp;
+            bmp = ValidateCodeHelper.Resize(bmp, 410, 500, ValidateCodeHelper.Mode.High);
+            int grayavg = ValidateCodeHelper.GrayAvg(bmp);
+            pictureBox2.Image = bmp;
+            bmp = ValidateCodeHelper.ToBinaryzation(bmp, grayavg);
+            string result = ValidateCodeHelper.GetStringByBitmap(bmp, 41, 50, 50);
+            //0：□，1：■
+            result = result.Replace('1', '■').Replace('0', '□');
+            textBox2.Text = ValidateCodeHelper.OutputMatrixString(result, 41, 50);
         }
     }
 }

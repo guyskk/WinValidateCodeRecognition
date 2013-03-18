@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 
 namespace WinValidateCodeRecognition
 {
@@ -58,13 +56,6 @@ namespace WinValidateCodeRecognition
                     g.DrawLine(new Pen(color, 1), x, y, x + 1, y + 1);
                 }
             }
-            return bmpTmp;
-        }
-        public static Bitmap ToBinaryzation(Bitmap bmp)
-        {
-            Bitmap bmpTmp = new Bitmap(bmp.Width, bmp.Height);
-            Graphics g = Graphics.FromImage(bmpTmp);
-            g.DrawImage(bmp, 0, 0);
             return bmpTmp;
         }
 
@@ -231,6 +222,7 @@ namespace WinValidateCodeRecognition
 
         /// <summary>
         /// 匹配运算结果数字
+        /// 1+2=3中的‘3’
         /// </summary>
         /// <param name="bmpTg"></param>
         /// <param name="bmpMT"></param>
@@ -319,6 +311,7 @@ namespace WinValidateCodeRecognition
             }
         }
 
+        #region 图片旋转
         /// <summary>
         /// 顺时针旋转90度
         /// </summary>
@@ -341,6 +334,7 @@ namespace WinValidateCodeRecognition
             bmp.Dispose();
             return bmpTmp;
         }
+        #endregion
 
         public enum Mode
         {
@@ -348,6 +342,7 @@ namespace WinValidateCodeRecognition
             Low = 1
         }
 
+        #region 改变图片尺寸
         /// <summary>
         /// 改变图片尺寸
         /// </summary>
@@ -386,7 +381,7 @@ namespace WinValidateCodeRecognition
         }
 
         /// <summary>
-        /// 
+        /// 改变图片尺寸
         /// </summary>
         /// <param name="originalImagePath"></param>
         /// <param name="width"></param>
@@ -473,5 +468,85 @@ namespace WinValidateCodeRecognition
             }
 
         }
+        #endregion
+
+        #region 图片字符矩阵
+
+        //DEMO
+        //111001111001111
+        //■■■111
+        //□□■001
+        //■■■111
+        //□□■001
+        //■■■111
+        //数字：3
+
+        /// <summary>
+        /// 获得图片的矩阵字符
+        /// 0：□，1：■
+        /// 图片的宽/矩阵的宽=图片的高/矩阵的高
+        /// </summary>
+        /// <param name="bmp">图片</param>
+        /// <param name="matrixW">矩阵的宽</param>
+        /// <param name="matrixH">矩阵的高</param>
+        /// <param name="width">图片的宽，一定要是矩阵宽的倍数</param>
+        /// <param name="height">图片的高，一定要是矩阵高的倍数</param>
+        /// <param name="redress">容错率(0-100)</param>
+        /// <returns></returns>
+        public static string GetStringByBitmap(Bitmap bmp, int matrixW, int matrixH, int redress)
+        {
+            int width = bmp.Width;
+            int height = bmp.Height;
+            int w = width / matrixW;
+            int h = height / matrixH;
+            int matchPxNum = 0;
+            int matchResult = 0;
+            string result = string.Empty;
+            for (int y = 0; y < matrixH; y++)
+            {
+                for (int x = 0; x < matrixW; x++)
+                {
+                    matchPxNum = 0;
+                    for (int px = w * x; px < (x + 1) * w; px++)
+                    {
+                        for (int py = h * y; py < (y + 1) * h; py++)
+                        {
+                            if (bmp.GetPixel(px, py).B < 100)//黑色:0<100，白色：255>100
+                            {
+                                matchPxNum++;
+                            }
+                        }
+                    }
+                    matchResult = (int)((matchPxNum * 1.0f / (w * h)) * 100);
+                    if (matchResult + redress > 100)
+                    {
+                        result += "1";
+                    }
+                    else
+                    {
+                        result += "0";
+                    }
+                }
+            }
+            return result;
+        }
+        #endregion
+
+        #region 输出矩阵字符串
+        /// <summary>
+        /// 输出矩阵字符串
+        /// </summary>
+        /// <param name="matrixStr"></param>
+        /// <returns></returns>
+        public static string OutputMatrixString(string matrixStr, int matrixWidth, int matrixHeight)
+        {
+            string result = string.Empty;
+            for (int y = 0; y < matrixHeight; y++)
+            {
+                result += matrixStr.Substring(y * matrixWidth, matrixWidth) + "\r\n";
+            }
+            return result;
+        }
+        #endregion
     }
 }
