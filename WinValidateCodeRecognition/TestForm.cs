@@ -13,7 +13,7 @@ namespace WinValidateCodeRecognition
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string path = @"D:\My Documents\GitHub\WinValidateCodeRecognition\WinValidateCodeRecognition\TemplatePic\16\16.jpg";
+            string path = @"C:\Users\Michael_AS\Desktop\passCodeAction.jpg";
             Bitmap bmp = new Bitmap(path);
             Bitmap bmpT = ValidateCodeHelper.Resize(bmp, 200, 200, ValidateCodeHelper.Mode.High);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -22,7 +22,7 @@ namespace WinValidateCodeRecognition
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
-            string path = @"D:\My Documents\GitHub\WinValidateCodeRecognition\WinValidateCodeRecognition\TemplatePic\16\16.jpg";
+            string path = @"C:\Users\Michael_AS\Desktop\passCodeAction.jpg";
             Bitmap bmp = new Bitmap(path);
             Bitmap bmpT = ValidateCodeHelper.Resize(bmp, 200, 200, ValidateCodeHelper.Mode.High);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
